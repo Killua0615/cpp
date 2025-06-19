@@ -24,6 +24,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-$(OBJ_DIR):
-	@mkdir $(OBJ_DIR)
