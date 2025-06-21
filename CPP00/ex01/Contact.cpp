@@ -1,5 +1,30 @@
 #include "Contact.hpp"
 
+bool Contact::setContact()
+{
+  std::cout << "First name     : ";
+  std::getline(std::cin, this->_firstName);
+  if (this->_firstName.empty()) return false;
+
+  std::cout << "Last name      : ";
+  std::getline(std::cin, this->_lastName);
+  if (this->_lastName.empty()) return false;
+
+  std::cout << "Nickname       : ";
+  std::getline(std::cin, this->_nickname);
+  if (this->_nickname.empty()) return false;
+
+  std::cout << "Phone number   : ";
+  std::getline(std::cin, this->_phoneNumber);
+  if (this->_phoneNumber.empty()) return false;
+
+  std::cout << "Darkest secret : ";
+  std::getline(std::cin, this->_secret);
+  if (this->_secret.empty()) return false;
+
+  return true;
+}
+
 
 Contact::Contact(void){
     std::cout << "\033[90mConstructor for Contact called\033[0m" << std::endl;
@@ -43,11 +68,11 @@ void Contact::showlittle(void) const
 
 void Contact::showall(void) const 
 {
-    std::cout << "\n ‧͙⁺˚*･༓☾   ☽༓･*˚⁺‧͙ \n" << std::endl;
-    std::cout << "- First Name:         " << this->_firstName << std::endl;
-    std::cout << "- Last Name:          " << this->_lastName << std::endl;
-    std::cout << "- Nick Name:          " << this->_nickname << std::endl;
-    std::cout << "- Phone Number:       " << this->_phoneNumber << std::endl;
-    std::cout << "- Darkest secret :    " << this->_secret << std::endl;
-    std::cout << "\n ‧͙⁺˚*･༓☾   ☽༓･*˚⁺‧͙ \n" << std::endl;
+    std::cout << "----------------------------" << std::endl;
+    std::cout << "- First name          :" << this->_firstName << std::endl;
+    std::cout << "- Last name           :" << this->_lastName << std::endl;
+    std::cout << "- Nickname            :" << this->_nickname << std::endl;
+    std::cout << "- Phone Number:       :" << this->_phoneNumber << std::endl;
+    std::cout << "- Darkest secret      :" << this->_secret << std::endl;
+    std::cout << "----------------------------" << std::endl;
 }

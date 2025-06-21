@@ -20,7 +20,7 @@ int ask_index(PhoneBook &directory)
     {
       std::cin.clear();
       std::cin.ignore(10000, '\n');
-      std::cout << "\033[31m(ভ_ ভ) ރ Give me a valid integer, please!\033[0m" << std::endl;
+      std::cout << "\033[31mGive me a valid integer!\033[0m" << std::endl;
     }
     else if (index < 0 || index > 7 || index > directory.getfull()) {
       std::cout << "\033[31m> Invalid index.\033[0m" << std::endl << std::endl;
@@ -36,19 +36,18 @@ void search(PhoneBook &directory)
 {
   int index;
     
-  (void) index; //pas oublier d'enlever ensuite
-  std::cout << "⬇ -- Here's what's currently in the directory -- ⬇" << std::endl;
+  (void) index;
   std::cout << "-------------------------------------------------" << std::endl;
   std::cout << "|   Index   | First Name | Last Name| Nick Name |" << std::endl;
   std::cout << "-------------------------------------------------" << std::endl;
   directory.show_directory();
   if (directory.getsize() == 0) {
-    std::cout << "\033[31mHO HO... Directory seems empty ! ADD someone in the PhoneBook.\033[0m\n\n";
+    std::cout << "\033[31mDirectory seems empty!\033[0m\n\n";
     return ;
   }
   std::cout << "-------------------------------------------------" << std::endl;
   std::cout << "\n";
-  std::cout << "> Enter a valid index of the contact to view details." << std::endl;
+  std::cout << "\033[34m> Enter a valid index of the contact to view details.\033[0m" << std::endl;
   index = ask_index(directory);
   if (index >= 0)
     directory.show_contact(index);
@@ -56,30 +55,11 @@ void search(PhoneBook &directory)
 
 void add(PhoneBook &directory)
 {
-  std::string fn, ln, nn, phone, secret;
-
   std::cout << "\033[34mGet me some information!\033[0m" << std::endl;
 
-  std::cout << "First name     : ";
-  std::cin >> std::ws;
-  std::getline(std::cin, fn);
-
-  std::cout << "Last name      : ";
-  std::getline(std::cin, ln);
-
-  std::cout << "Nickname       : ";
-  std::getline(std::cin, nn);
-
-  std::cout << "Phone number   : ";
-  std::getline(std::cin, phone);
-
-  std::cout << "Darkest secret : ";
-  std::getline(std::cin, secret);
-
-  std::cout << "\033[34mContact added successfully!☀️\033[0m\n" << std::endl;
-  directory.add_repertory(fn, ln, nn, phone, secret);
+  if (!directory.add_repertory())
+    return;
 }
-
 
 int main()
 {
@@ -104,7 +84,7 @@ int main()
       search(directory);
     else if (action == "EXIT")
     {
-      std::cout << "> Thank you for using the funniest PhoneBook ever \033[95m(づ ᴗ _ᴗ)づ\033[0m" << std::endl;
+      std::cout << "\033[34mThank you for using.\033[0m" << std::endl;
       break;
     }
     else

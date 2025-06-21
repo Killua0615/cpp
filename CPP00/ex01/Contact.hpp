@@ -4,10 +4,8 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
-//In the .hpp file I always need to declare my classes and the functions' prototype. in the .cpp we write their functions
 
 class Contact {
-  // tout ce qui est ici est privé -> je peux les modifier dans des fonctions publiques par exemple mais a definir dans la classe
   private:
     std::string     _firstName;
     std::string     _lastName;
@@ -20,6 +18,7 @@ class Contact {
     Contact();
     ~Contact();
 
+    bool setContact();
     void savecontact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string secret, int index);
     void showlittle(void) const;
     void showall(void) const;

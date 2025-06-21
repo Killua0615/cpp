@@ -36,6 +36,29 @@ void PhoneBook::add_repertory(std::string firstName, std::string lastName, std::
   _full++;
 }
 
+bool PhoneBook::add_repertory() {
+  std::string firstName, lastName, nickname, phoneNumber, secret;
+
+  std::cout << "First name     : ";
+  std::getline(std::cin, firstName);
+  std::cout << "Last name      : ";
+  std::getline(std::cin, lastName);
+  std::cout << "Nickname       : ";
+  std::getline(std::cin, nickname);
+  std::cout << "Phone number   : ";
+  std::getline(std::cin, phoneNumber);
+  std::cout << "Darkest secret : ";
+  std::getline(std::cin, secret);
+
+  if (firstName.empty() || lastName.empty() || nickname.empty() || phoneNumber.empty() || secret.empty()) {
+    std::cout << "\033[31mPlease do not leave fields empty.\033[0m" << std::endl;
+    return false;
+  }
+
+  this->add_repertory(firstName, lastName, nickname, phoneNumber, secret);
+  return true;
+}
+
 void PhoneBook::show_directory() const
 {
   for (int i = 0; i < _full; i++)
