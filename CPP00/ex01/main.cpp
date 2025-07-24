@@ -38,7 +38,7 @@ void search(PhoneBook &directory)
     
   (void) index;
   std::cout << "-------------------------------------------------" << std::endl;
-  std::cout << "|   Index   | First Name | Last Name| Nick Name |" << std::endl;
+  std::cout << "|   Index   | First Name | Last Name | Nick Name |" << std::endl;
   std::cout << "-------------------------------------------------" << std::endl;
   directory.show_directory();
   if (directory.getsize() == 0) {
