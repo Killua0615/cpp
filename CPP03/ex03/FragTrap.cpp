@@ -1,0 +1,30 @@
+//FragTrap.cpp
+#include "FragTrap.hpp"
+
+FragTrap::FragTrap() : ClapTrap() {
+  _hitPoints = 100; _energyPoints = 100; _attackDamage = 30;
+  std::cout << "FragTrap default ctor\n";
+}
+FragTrap::FragTrap(const std::string& name) : ClapTrap(name) {
+  _hitPoints = 100; _energyPoints = 100; _attackDamage = 30;
+  std::cout << "FragTrap " << _name << " ctor\n";
+}
+FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other) {
+  std::cout << "FragTrap copy ctor\n";
+}
+FragTrap& FragTrap::operator=(const FragTrap& other) {
+  std::cout << "FragTrap copy assign\n";
+  if (this != &other) ClapTrap::operator=(other);
+  return *this;
+}
+FragTrap::~FragTrap() {
+  std::cout << "FragTrap dtor\n";
+}
+void FragTrap::attack(const std::string& target) {
+  if (_hitPoints <= 0 || _energyPoints <= 0) { std::cout << "FragTrap " << _name << " cannot attack\n"; return; }
+  --_energyPoints;
+  std::cout << "FragTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!\n";
+}
+void FragTrap::highFivesGuys(void) {
+  std::cout << "FragTrap " << _name << " requests high fives\n";
+}
