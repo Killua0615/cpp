@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nateshim <nateshim@student.42.fr>          +#+  +:+       +#+         #
+#    By: nateshim <nateshim@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/02 21:43:13 by nateshim          #+#    #+#              #
-#    Updated: 2025/09/02 21:43:16 by nateshim         ###   ########.fr        #
+#    Updated: 2025/09/03 03:36:19 by nateshim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = violence
 CXX     = c++
-CXXFLAGS= -Wall -Wextra -Werror -std=c++98
+CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -pedantic
 SRC     = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJDIR  = obj
 OBJ     = $(SRC:%.cpp=$(OBJDIR)/%.o)

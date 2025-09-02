@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nateshim <nateshim@student.42.fr>          +#+  +:+       +#+         #
+#    By: nateshim <nateshim@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/02 21:41:11 by nateshim          #+#    #+#              #
-#    Updated: 2025/09/02 21:41:14 by nateshim         ###   ########.fr        #
+#    Updated: 2025/09/03 03:35:57 by nateshim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = zombies
 COMPILE = c++
-FLAGS   = -Wall -Wextra -Werror -std=c++98
+FLAGS   = -Wall -Wextra -Werror -std=c++98 -pedantic
 RM      = rm -rf
 
 SRC     = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp

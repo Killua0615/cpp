@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nateshim <nateshim@student.42.fr>          +#+  +:+       +#+         #
+#    By: nateshim <nateshim@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/02 21:43:44 by nateshim          #+#    #+#              #
-#    Updated: 2025/09/02 21:43:47 by nateshim         ###   ########.fr        #
+#    Updated: 2025/09/03 03:36:25 by nateshim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = sed
 CXX     = c++
-CXXFLAGS= -Wall -Wextra -Werror -std=c++98
+CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -pedantic
 SRC     = main.cpp
 OBJDIR  = obj
 OBJ     = $(SRC:%.cpp=$(OBJDIR)/%.o)
