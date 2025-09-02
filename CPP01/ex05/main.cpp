@@ -3,23 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nateshim <nateshim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nateshim <nateshim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 21:44:03 by nateshim          #+#    #+#             */
-/*   Updated: 2025/09/02 21:44:05 by nateshim         ###   ########.fr       */
+/*   Updated: 2025/09/02 22:00:42 by nateshim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int	main(void)
-{
-	Harl	h;
-
-	h.complain("DEBUG");
-	h.complain("INFO");
-	h.complain("WARNING");
-	h.complain("ERROR");
-	h.complain("UNKNOWN");
-	return (0);
+int main(int argc, char** argv) {
+  Harl h;
+  if (argc == 2) {
+    h.complain(argv[1]);
+  } else {
+    h.complain("DEBUG");
+    h.complain("INFO");
+    h.complain("WARNING");
+    h.complain("ERROR");
+  }
+  return 0;
 }
