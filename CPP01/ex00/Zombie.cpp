@@ -6,11 +6,9 @@
 /*   By: nateshim <nateshim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 21:41:31 by nateshim          #+#    #+#             */
-/*   Updated: 2025/09/03 03:45:07 by nateshim         ###   ########.fr       */
+/*   Updated: 2025/09/03 05:31:40 by nateshim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "Zombie.hpp"
 
 #include "Zombie.hpp"
 
