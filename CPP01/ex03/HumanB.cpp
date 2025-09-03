@@ -3,26 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nateshim <nateshim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nateshim <nateshim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 21:42:58 by nateshim          #+#    #+#             */
-/*   Updated: 2025/09/02 21:43:00 by nateshim         ###   ########.fr       */
+/*   Updated: 2025/09/04 03:18:00 by nateshim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 #include <iostream>
 
-HumanB::HumanB(const std::string &name) : name_(name), weapon_(0)
-{
+//initialize, sets weapon_ to 0 (null), (C++98 uses 0; in modern C++ you’d use nullptr)
+HumanB::HumanB(const std::string &name) : name_(name), weapon_(0) {}
+void HumanB::setWeapon(Weapon &weapon){
+  //Stores the address, can change equip and switching to another weapon later.
+	weapon_ = &weapon;                    
 }
-void HumanB::setWeapon(Weapon &weapon)
-{
-	weapon_ = &weapon;
-}
-void HumanB::attack() const
-{
-	if (!weapon_)
+void HumanB::attack() const{
+	if (!weapon_) //if == 0 return;
 		return ;
 	std::cout << name_ << " attacks with their " << weapon_->getType() << std::endl;
 }
