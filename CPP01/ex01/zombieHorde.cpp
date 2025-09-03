@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nateshim <nateshim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nateshim <nateshim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 21:42:05 by nateshim          #+#    #+#             */
-/*   Updated: 2025/09/02 21:42:06 by nateshim         ###   ########.fr       */
+/*   Updated: 2025/09/03 21:05:26 by nateshim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Zombie	*zombieHorde(int N, std::string name)
 
 	if (N <= 0)
 		return (NULL);
-	h = new Zombie[N];
+	h = new Zombie[N]; //Zombie::Zombie() is called N times here
 	i = 0;
 	while (i < N)
 	{
