@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nateshim <nateshim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nateshim <nateshim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:07:13 by nateshim          #+#    #+#             */
-/*   Updated: 2025/09/02 22:07:15 by nateshim         ###   ########.fr       */
+/*   Updated: 2025/09/04 21:43:48 by nateshim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int argc, char **argv)
 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 		return (0);
 	}
+	//文字列 "DEBUG" "INFO" "WARNING" "ERROR" のどれかを 0〜3 に変換。該当しなければ -1 を返す。
 	idx = levelIndex(argv[1]);
 	switch (idx)
 	{

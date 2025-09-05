@@ -6,7 +6,7 @@
 #    By: nateshim <nateshim@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/02 22:07:18 by nateshim          #+#    #+#              #
-#    Updated: 2025/09/03 03:36:37 by nateshim         ###   ########.fr        #
+#    Updated: 2025/09/04 22:17:30 by nateshim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ $(NAME): $(OBJ)
 $(OBJDIR)/%.o: %.cpp
 	@mkdir -p $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+run: $(NAME)
+	./$(NAME)
 clean:
 	$(RM) $(OBJDIR)
 fclean: clean
