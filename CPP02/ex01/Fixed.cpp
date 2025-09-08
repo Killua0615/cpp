@@ -3,7 +3,7 @@
 
 const int Fixed::_fracBits = 8;
 
-Fixed::Fixed() : _raw(0) {
+Fixed::Fixed() : _raw(0) { //
   std::cout << "Default constructor called" << std::endl;
 }
 Fixed::Fixed(const Fixed& other) : _raw(other._raw) {
@@ -34,14 +34,16 @@ int Fixed::getRawBits(void) const {
 void Fixed::setRawBits(int const raw) {
   _raw = raw;
 }
-float Fixed::toFloat(void) const {
+float Fixed::toFloat(void) const { //Converts fixed-point _raw to float and returns it
   return static_cast<float>(_raw) / static_cast<float>(1 << _fracBits);
 }
 int Fixed::toInt(void) const {
   return _raw >> _fracBits;
 }
 
-#include <ostream>
+//To enable direct output of Fixed values (displaying them in a human-readable format).
+//Converts the received Fixed value to a standard floating-point number using toFloat()
+//inserts that value into the output stream (os), and finally returns os
 std::ostream& operator<<(std::ostream& os, const Fixed& v) {
   os << v.toFloat();
   return os;
