@@ -2,15 +2,16 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
-#include <iosfwd>
-#include <iostream>
 #include <cmath>
+#include <iosfwd>
 #include <ostream>
+#include <iostream>
 
 class Fixed {
 private:
   int              _raw;
   static const int _fracBits;
+
 public:
   Fixed();
   Fixed(const Fixed& other);

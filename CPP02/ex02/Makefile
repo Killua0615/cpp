@@ -1,5 +1,5 @@
 # Makefile
-NAME    = fixed
+NAME    = a.out
 CXX     = c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98
 SRC     = main.cpp Fixed.cpp
@@ -13,6 +13,8 @@ $(NAME): $(OBJ)
 $(OBJDIR)/%.o: %.cpp
 	@mkdir -p $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+run: $(NAME)
+	./$(NAME)
 clean:
 	$(RM) $(OBJDIR)
 fclean: clean
