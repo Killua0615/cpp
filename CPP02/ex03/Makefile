@@ -1,7 +1,18 @@
-# Makefile
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: nateshim <nateshim@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/09/09 21:29:48 by nateshim          #+#    #+#              #
+#    Updated: 2025/09/09 21:40:35 by nateshim         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME    = bsp
 CXX     = c++
-CXXFLAGS= -Wall -Wextra -Werror -std=c++98
+CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -pedantic
 SRC     = main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJDIR  = obj
 OBJ     = $(SRC:%.cpp=$(OBJDIR)/%.o)

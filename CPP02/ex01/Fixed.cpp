@@ -1,4 +1,15 @@
-//Fixed.cpp
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nateshim <nateshim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/09 21:28:18 by nateshim          #+#    #+#             */
+/*   Updated: 2025/09/09 21:48:46 by nateshim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
 
 const int Fixed::_fracBits = 8;
@@ -24,7 +35,8 @@ Fixed::Fixed(int n) {
 }
 Fixed::Fixed(float f) {
   std::cout << "Float constructor called" << std::endl;
-  _raw = static_cast<int>(std::roundf(f * (1 << _fracBits)));
+  const float scaled = f * (1 << _fracBits);
+  _raw = static_cast<int>(scaled >= 0.0f ? scaled + 0.5f : scaled - 0.5f);
 }
 
 int Fixed::getRawBits(void) const {

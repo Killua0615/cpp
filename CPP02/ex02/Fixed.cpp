@@ -1,4 +1,15 @@
-//Fixed.cpp
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nateshim <nateshim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/09 21:27:18 by nateshim          #+#    #+#             */
+/*   Updated: 2025/09/09 21:54:53 by nateshim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
 
 const int Fixed::_fracBits = 8;
@@ -12,7 +23,13 @@ Fixed::~Fixed() {} //Destructor
 //Integer → Fixed-point
 Fixed::Fixed(int n) { _raw = n << _fracBits; } //_raw = n << 8（= n * 256）
 //Real number → Fixed-point
-Fixed::Fixed(float f) { _raw = static_cast<int>(std::roundf(f * static_cast<float>(1 << _fracBits))); } 
+Fixed::Fixed(float f) {
+    float scaled = f * static_cast<float>(1 << _fracBits);
+    if (scaled >= 0)
+        _raw = static_cast<int>(scaled + 0.5f);
+    else
+        _raw = static_cast<int>(scaled - 0.5f);
+}
 
 int Fixed::getRawBits(void) const { return _raw; }
 void Fixed::setRawBits(int const raw) { _raw = raw; }
