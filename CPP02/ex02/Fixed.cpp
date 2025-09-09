@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nateshim <nateshim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nateshim <nateshim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 21:27:18 by nateshim          #+#    #+#             */
-/*   Updated: 2025/09/09 21:54:53 by nateshim         ###   ########.fr       */
+/*   Updated: 2025/09/10 05:58:59 by nateshim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ float Fixed::toFloat(void) const { return static_cast<float>(_raw) / static_cast
 int Fixed::toInt(void) const { return _raw >> _fracBits; }
 
 //Defining the "behaviour" of operators such as <, >=, <=, ==, and != yourself
+//this (left-hand side) is a
+//rhs (reference to the right-hand side) is b
+//return _raw > rhs._raw; (return this->_raw > rhs._raw;)
 bool Fixed::operator>(const Fixed& rhs) const { return _raw > rhs._raw; }
 bool Fixed::operator<(const Fixed& rhs) const { return _raw < rhs._raw; }
 bool Fixed::operator>=(const Fixed& rhs) const { return _raw >= rhs._raw; }
@@ -52,10 +55,15 @@ Fixed Fixed::operator-(const Fixed& rhs) const { Fixed r; r._raw = _raw - rhs._r
 Fixed Fixed::operator*(const Fixed& rhs) const { return Fixed(this->toFloat() * rhs.toFloat()); }
 Fixed Fixed::operator/(const Fixed& rhs) const { return Fixed(this->toFloat() / rhs.toFloat()); }
 
-//++a, --a
+//++a, a++
 Fixed& Fixed::operator++() { ++_raw; return *this; }
+//Fixed Fixed::operator++(int) {
+//     Fixed t(*this); ← Old copy of self (t)
+//     ++_raw;         ← The actual increment occurs here
+//     return t;       ← Returns the old value
+//}
 Fixed  Fixed::operator++(int) { Fixed t(*this); ++_raw; return t; }
-//a++, a--
+//--a, a--
 Fixed& Fixed::operator--() { --_raw; return *this; }
 Fixed  Fixed::operator--(int) { Fixed t(*this); --_raw; return t; }
 
@@ -63,6 +71,9 @@ Fixed  Fixed::operator--(int) { Fixed t(*this); --_raw; return t; }
 //Since <= and >= are used, it returns the first argument when values are equal.
 //Non-const version and const version
 Fixed& Fixed::min(Fixed& a, Fixed& b) { return (a._raw <= b._raw) ? a : b; }
+//Condition: a._raw <= b._raw
+//true: a
+//false: b
 const Fixed& Fixed::min(const Fixed& a, const Fixed& b) { return (a._raw <= b._raw) ? a : b; }
 Fixed& Fixed::max(Fixed& a, Fixed& b) { return (a._raw >= b._raw) ? a : b; }
 const Fixed& Fixed::max(const Fixed& a, const Fixed& b) { return (a._raw >= b._raw) ? a : b; }
