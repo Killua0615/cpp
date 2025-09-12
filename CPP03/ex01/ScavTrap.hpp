@@ -5,16 +5,16 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-class ScavTrap : public ClapTrap {
-public:
-  ScavTrap();
-  ScavTrap(const std::string& name);
-  ScavTrap(const ScavTrap& other);
-  ScavTrap& operator=(const ScavTrap& other);
-  virtual ~ScavTrap();
+class ScavTrap : public ClapTrap { //(:public ClapTrap) inherits from public interface of ClapTrap
+  public:
+    ScavTrap();
+    ScavTrap(const std::string& name);
+    ScavTrap(const ScavTrap& other);
+    ScavTrap& operator=(const ScavTrap& other);
+    virtual ~ScavTrap();
 
-  virtual void attack(const std::string& target);
-  void guardGate();
+    virtual void attack(const std::string& target);
+    void guardGate();            //Just Display of plain text
 };
 
 #endif
