@@ -6,7 +6,7 @@ SRC     = main.cpp ClapTrap.cpp FragTrap.cpp
 OBJDIR  = obj
 OBJ     = $(SRC:%.cpp=$(OBJDIR)/%.o)
 RM      = rm -rf
-HEADER  = ClapTrap.hpp
+HEADER  = FragTrap.hpp
 
 all: $(NAME)
 $(NAME): $(OBJ)

@@ -6,7 +6,7 @@ SRC     = main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJDIR  = obj
 OBJ     = $(SRC:%.cpp=$(OBJDIR)/%.o)
 RM      = rm -rf
-HEADER  = ClapTrap.hpp
+HEADER  = ScavTrap.hpp
 
 all: $(NAME)
 $(NAME): $(OBJ)
