@@ -2,15 +2,18 @@
 NAME    = frag
 CXX     = c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -pedantic
-SRC     = main.cpp ClapTrap.cpp FragTrap.cpp
+SRC     = main.cpp ClapTrap.cpp FragTrap.cpp ScavTrap.cpp DiamondTrap.cpp
 OBJDIR  = obj
 OBJ     = $(SRC:%.cpp=$(OBJDIR)/%.o)
 RM      = rm -rf
+HEADER  = *.hpp
 
 all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^
-$(OBJDIR)/%.o: %.cpp
+run: $(NAME)
+	./$(NAME)
+$(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 clean:
