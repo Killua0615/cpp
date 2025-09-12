@@ -8,11 +8,13 @@ int main() {
   f.highFivesGuys();
   f.takeDamage(42);
   f.beRepaired(10);
+  std::cout << "\n";
 
   // Polymorphism & virtual dtor check
   ClapTrap* p = new FragTrap("Poly");
-  p->attack("Target2");         // 動的ディスパッチで FragTrap::attack
-  delete p;                     // 破棄は FragTrap dtor → ClapTrap dtor の順
+  p->attack("Target2");         
+  delete p;                     
+  std::cout << "\n";
 
   // Copy semantics (rule of three)
   FragTrap cpy(f);              // copy ctor
@@ -20,6 +22,5 @@ int main() {
   g = f;                        // copy assignment
   cpy.attack("CopyAttack");
   g.attack("AssignedAttack");
-
-  return 0;                     // 自動変数は逆順で dtor（Frag→Clap の連鎖）
+  return 0;
 }

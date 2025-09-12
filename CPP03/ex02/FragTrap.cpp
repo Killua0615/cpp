@@ -3,23 +3,16 @@
 #include <iostream>
 
 FragTrap::FragTrap() : ClapTrap() {
-  _hitPoints    = 100;
-  _energyPoints = 100;
-  _attackDamage = 30;
+  _hitPoints    = 100; _energyPoints = 100; _attackDamage = 30;
   std::cout << "FragTrap default constructor\n";
 }
-
 FragTrap::FragTrap(const std::string& name) : ClapTrap(name) {
-  _hitPoints    = 100;
-  _energyPoints = 100;
-  _attackDamage = 30;
+  _hitPoints    = 100; _energyPoints = 100; _attackDamage = 30;
   std::cout << "FragTrap " << _name << " constructor\n";
 }
-
 FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other) {
   std::cout << "FragTrap copy constructor\n";
 }
-
 FragTrap& FragTrap::operator=(const FragTrap& other) {
   std::cout << "FragTrap copy assign\n";
   if (this != &other) {
@@ -27,7 +20,6 @@ FragTrap& FragTrap::operator=(const FragTrap& other) {
   }
   return *this;
 }
-
 FragTrap::~FragTrap() {
   std::cout << "FragTrap destructor\n";
 }
@@ -38,8 +30,7 @@ void FragTrap::attack(const std::string& target) {
     return;
   }
   --_energyPoints;
-  std::cout << "FragTrap " << _name << " attacks " << target
-            << ", causing " << _attackDamage << " points of damage!\n";
+  std::cout << "FragTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!\n";
 }
 
 void FragTrap::highFivesGuys(void) {

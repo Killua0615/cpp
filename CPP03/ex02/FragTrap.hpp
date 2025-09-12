@@ -19,4 +19,4 @@ public:
   void highFivesGuys(void);
 };
 
-#endif // FRAGTRAP_HPP
+#endif

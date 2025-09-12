@@ -28,7 +28,6 @@ int main() {
   copy.attack("FromCopy");
   b.attack("FromAssigned");
   std::cout << "\n";
-
   return 0;
 }
 
