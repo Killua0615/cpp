@@ -1,16 +1,19 @@
 #Makefile
-NAME    = claptrap
+NAME    = a.out
 CXX     = c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -pedantic
 SRC     = main.cpp ClapTrap.cpp
 OBJDIR  = obj
 OBJ     = $(SRC:%.cpp=$(OBJDIR)/%.o)
 RM      = rm -rf
+HEADER  = ClapTrap.hpp
 
 all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^
-$(OBJDIR)/%.o: %.cpp
+run: $(NAME)
+	./$(NAME)
+$(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 clean:

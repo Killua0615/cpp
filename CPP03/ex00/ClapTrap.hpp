@@ -6,21 +6,22 @@
 #include <iostream>
 
 class ClapTrap {
-private:
-  std::string _name;
-  int _hitPoints;
-  int _energyPoints;
-  int _attackDamage;
-public:
-  ClapTrap();
-  ClapTrap(const std::string& name);
-  ClapTrap(const ClapTrap& other);
-  ClapTrap& operator=(const ClapTrap& other);
-  ~ClapTrap();
+  private:
+    std::string _name; //Character name
+    int _hitPoints;    //(HP): When it (0) cannot act.
+    int _energyPoints; //(EP): Consumes 1 point per attack or self-healing. Cannot act (0)
+    int _attackDamage; //(AP): Attack power
 
-  void attack(const std::string& target);
-  void takeDamage(unsigned int amount);
-  void beRepaired(unsigned int amount);
+  public:
+    ClapTrap();                                //Default constructor
+    ClapTrap(const std::string& name);         //Named constructor
+    ClapTrap(const ClapTrap& other);           //Copy constructor
+    ClapTrap& operator=(const ClapTrap& other);//Copy assignment operator
+    ~ClapTrap();
+
+    void attack(const std::string& target); //If HP>0 and EP>0, Consumes 1(EP) and displays target attacked.
+    void takeDamage(unsigned int amount);   //Reduce HP. Do not reduce below (0)
+    void beRepaired(unsigned int amount);   //If If HP>0 and EP>0, Repaired HP.
 };
 
 #endif
