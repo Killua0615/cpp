@@ -15,6 +15,6 @@ public:
   virtual ~Dog();
 
   virtual void makeSound() const;
-  Brain* getBrain() const;
+  Brain* getBrain() const; //getBrain() is a function that returns a pointer to the Brain object owned internally by Dog/Cat.
 };
 #endif
