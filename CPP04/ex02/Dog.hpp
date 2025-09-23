@@ -7,7 +7,7 @@
 #include <iostream>
 
 class Dog : public Animal {
-  Brain* brain;
+  Brain* brain; //A pointer for owning one's own dedicated 'brain' object
 public:
   Dog();
   Dog(const Dog& o);
