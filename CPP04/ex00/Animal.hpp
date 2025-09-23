@@ -18,3 +18,6 @@ public:
   virtual void makeSound() const;
 };
 #endif
+
+//"Want to produce a derived cry" → virtual makeSound()
+//"Delete using the base pointer" → virtual ~Base()
