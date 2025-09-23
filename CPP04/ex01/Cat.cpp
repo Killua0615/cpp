@@ -9,5 +9,6 @@ Cat& Cat::operator=(const Cat& o){
   return *this;
 }
 Cat::~Cat(){ delete brain; std::cout << "Cat dtor\n"; }
+
 void Cat::makeSound() const { std::cout << "Meow!\n"; }
 Brain* Cat::getBrain() const { return brain; }
