@@ -10,6 +10,7 @@ public:
   Dog(const Dog& o);
   Dog& operator=(const Dog& o);
   virtual ~Dog();
+
   virtual void makeSound() const;
 };
 #endif

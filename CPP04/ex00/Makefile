@@ -6,11 +6,14 @@ SRC     = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 OBJDIR  = obj
 OBJ     = $(SRC:%.cpp=$(OBJDIR)/%.o)
 RM      = rm -rf
+HEADER  = Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
 
 all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^
-$(OBJDIR)/%.o: %.cpp
+run: $(NAME)
+	./$(NAME)
+$(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 clean: ; $(RM) $(OBJDIR)
