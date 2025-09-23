@@ -9,5 +9,7 @@ Dog& Dog::operator=(const Dog& o){
   return *this;
 }
 Dog::~Dog(){ delete brain; std::cout << "Dog dtor\n"; }
+
 void Dog::makeSound() const { std::cout << "Woof!\n"; }
 Brain* Dog::getBrain() const { return brain; }
+//getBrain() is a function that returns a pointer to the Brain object owned internally by Dog/Cat.
