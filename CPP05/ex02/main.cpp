@@ -20,27 +20,32 @@ int main() {
 
 		std::cout << boss << std::endl;
 		std::cout << mid << std::endl;
-		std::cout << intern << std::endl;
+		std::cout << intern << "\n" << std::endl;
 
 		std::cout << s << std::endl;
 		std::cout << r << std::endl;
-		std::cout << p << std::endl;
+		std::cout << p << "\n" << std::endl;
 
 		intern.executeForm(s);
-
 		intern.signForm(s);
+		std::cout << " " << std::endl;
+	
 		mid.signForm(s);
 		mid.executeForm(s);
+		std::cout << " " << std::endl;
 
 		boss.signForm(r);
 		boss.executeForm(r);
+		std::cout << " " << std::endl;
 
 		mid.signForm(p);
 		boss.signForm(p);
 		mid.executeForm(p);
 		boss.executeForm(p);
 
-	} catch (std::exception& e) {
+	} 
+	//exception occurs display the cause and terminate without crashing the programme
+	catch (std::exception& e) {
 		std::cout << "Fatal: " << e.what() << std::endl;
 	}
 	return 0;

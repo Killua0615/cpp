@@ -21,6 +21,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 	return *this;
 }
 
+//50% probability of success or failure
 void RobotomyRequestForm::action() const {
 	std::cout << "* drilling noises *" << std::endl;
 	if (std::rand() % 2)
