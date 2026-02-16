@@ -8,6 +8,9 @@ OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
+run: $(NAME)
+	./$(NAME)
+
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 

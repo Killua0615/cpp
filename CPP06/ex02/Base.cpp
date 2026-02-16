@@ -17,6 +17,21 @@ Base* generate(void)
 	}
 }
 
+/*
+Determine whether it is A, B, or C,practice both.
+ dynamic_cast fails differently:
+ - pointer cast returns NULL
+ - reference cast throws an exception
+
+`Base* p = new C();`
+ Appearance type (compile-time type): Base*
+ → The type of variable p. Only Base is known in the code
+ Actual type (runtime type): C
+ → The genuine contents created by new C().
+
+If p points to content that is truly C → return C* (success)
+If it is not C → return NULL (failure)
+*/
 void identify(Base* p)
 {
 	std::cout << "Identify pointer: ";
