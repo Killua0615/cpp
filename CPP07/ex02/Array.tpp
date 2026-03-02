@@ -1,9 +1,11 @@
 #ifndef ARRAY_TPP
 #define ARRAY_TPP
 
+//default constructor
 template <typename T>
 Array<T>::Array() : _data(NULL), _size(0) {}
 
+//constructor with a size parameter
 template <typename T>
 Array<T>::Array(unsigned int n) : _data(NULL), _size(n)
 {
@@ -12,6 +14,7 @@ Array<T>::Array(unsigned int n) : _data(NULL), _size(n)
 	_data = new T[_size]();
 }
 
+//copy constructor
 template <typename T>
 Array<T>::Array(const Array& other) : _data(NULL), _size(other._size)
 {
@@ -26,12 +29,14 @@ Array<T>::Array(const Array& other) : _data(NULL), _size(other._size)
 	}
 }
 
+//distractor
 template <typename T>
 Array<T>::~Array()
 {
 	delete[] _data;
 }
 
+//copy assignment operator
 template <typename T>
 Array<T>& Array<T>::operator=(const Array& other)
 {
@@ -55,6 +60,7 @@ Array<T>& Array<T>::operator=(const Array& other)
 	return *this;
 }
 
+//operator not const
 template <typename T>
 T& Array<T>::operator[](std::size_t index)
 {
@@ -63,6 +69,7 @@ T& Array<T>::operator[](std::size_t index)
 	return _data[index];
 }
 
+//const operator
 template <typename T>
 const T& Array<T>::operator[](std::size_t index) const
 {
@@ -71,6 +78,7 @@ const T& Array<T>::operator[](std::size_t index) const
 	return _data[index];
 }
 
+//return size()
 template <typename T>
 std::size_t Array<T>::size() const
 {
