@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
+#include <climits>
 
 RPN::RPN() {}
 
@@ -28,14 +29,27 @@ int RPN::evaluate(const std::string &expression) {
 			_stack.pop();
 			int a = _stack.top();
 			_stack.pop();
-			if (token[0] == '+')
+			if (token[0] == '+') {
+				if ((b > 0 && a > INT_MAX - b) || (b < 0 && a < INT_MIN - b))
+					throw std::runtime_error("Error");
 				_stack.push(a + b);
-			else if (token[0] == '-')
+			} else if (token[0] == '-') {
+				if ((b < 0 && a > INT_MAX + b) || (b > 0 && a < INT_MIN + b))
+					throw std::runtime_error("Error");
 				_stack.push(a - b);
-			else if (token[0] == '*')
+			} else if (token[0] == '*') {
+				if (a != 0 && b != 0) {
+					if ((a > 0 && b > 0 && a > INT_MAX / b)
+						|| (a < 0 && b < 0 && a < INT_MAX / b)
+						|| (a > 0 && b < 0 && b < INT_MIN / a)
+						|| (a < 0 && b > 0 && a < INT_MIN / b))
+						throw std::runtime_error("Error");
+				}
 				_stack.push(a * b);
-			else if (token[0] == '/') {
+			} else if (token[0] == '/') {
 				if (b == 0)
+					throw std::runtime_error("Error");
+				if (a == INT_MIN && b == -1)
 					throw std::runtime_error("Error");
 				_stack.push(a / b);
 			}
