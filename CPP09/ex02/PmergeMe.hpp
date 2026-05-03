@@ -28,8 +28,8 @@ private:
 
 	std::vector<size_t> generateJacobsthalSequence(size_t n);
 
-	void binaryInsert(std::vector<int> &sorted, int value);
-	void binaryInsert(std::deque<int> &sorted, int value);
+	void binaryInsert(std::vector<int> &sorted, int value, std::vector<int>::iterator bound);
+	void binaryInsert(std::deque<int> &sorted, int value, std::deque<int>::iterator bound);
 };
 
 #endif

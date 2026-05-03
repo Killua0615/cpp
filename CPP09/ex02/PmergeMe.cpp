@@ -62,13 +62,13 @@ std::vector<size_t> PmergeMe::generateJacobsthalSequence(size_t n) {
 	return jacob;
 }
 
-void PmergeMe::binaryInsert(std::vector<int> &sorted, int value) {
-	std::vector<int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), value);
+void PmergeMe::binaryInsert(std::vector<int> &sorted, int value, std::vector<int>::iterator bound) {
+	std::vector<int>::iterator pos = std::lower_bound(sorted.begin(), bound, value);
 	sorted.insert(pos, value);
 }
 
-void PmergeMe::binaryInsert(std::deque<int> &sorted, int value) {
-	std::deque<int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), value);
+void PmergeMe::binaryInsert(std::deque<int> &sorted, int value, std::deque<int>::iterator bound) {
+	std::deque<int>::iterator pos = std::lower_bound(sorted.begin(), bound, value);
 	sorted.insert(pos, value);
 }
 
@@ -128,30 +128,34 @@ void PmergeMe::fordJohnsonSort(std::vector<int> &arr) {
 	for (size_t i = 1; i < jacob.size(); i++) {
 		size_t idx = jacob[i];
 		if (idx < smallers.size() && !inserted[idx]) {
-			binaryInsert(result, smallers[idx]);
+			std::vector<int>::iterator bound = std::lower_bound(
+				result.begin(), result.end(), largers[idx]);
+			binaryInsert(result, smallers[idx], bound);
 			inserted[idx] = true;
 		}
-		// Insert elements between jacob[i] and jacob[i-1] in reverse order
 		for (size_t j = jacob[i] - 1; j > jacob[i - 1]; j--) {
 			if (j < smallers.size() && !inserted[j]) {
-				binaryInsert(result, smallers[j]);
+				std::vector<int>::iterator bound = std::lower_bound(
+					result.begin(), result.end(), largers[j]);
+				binaryInsert(result, smallers[j], bound);
 				inserted[j] = true;
 			}
 		}
 	}
 
-	// Insert any remaining elements not covered by Jacobsthal sequence
 	size_t lastJacob = jacob.empty() ? 0 : jacob.back();
 	for (size_t i = smallers.size(); i > lastJacob; i--) {
 		if (i - 1 < smallers.size() && !inserted[i - 1]) {
-			binaryInsert(result, smallers[i - 1]);
-			inserted[i - 1] = true;
+			size_t idx = i - 1;
+			std::vector<int>::iterator bound = std::lower_bound(
+				result.begin(), result.end(), largers[idx]);
+			binaryInsert(result, smallers[idx], bound);
+			inserted[idx] = true;
 		}
 	}
 
-	// Insert straggler if exists
 	if (hasStraggler)
-		binaryInsert(result, straggler);
+		binaryInsert(result, straggler, result.end());
 
 	arr = result;
 }
@@ -205,12 +209,16 @@ void PmergeMe::fordJohnsonSort(std::deque<int> &arr) {
 	for (size_t i = 1; i < jacob.size(); i++) {
 		size_t idx = jacob[i];
 		if (idx < smallers.size() && !inserted[idx]) {
-			binaryInsert(result, smallers[idx]);
+			std::deque<int>::iterator bound = std::lower_bound(
+				result.begin(), result.end(), largers[idx]);
+			binaryInsert(result, smallers[idx], bound);
 			inserted[idx] = true;
 		}
 		for (size_t j = jacob[i] - 1; j > jacob[i - 1]; j--) {
 			if (j < smallers.size() && !inserted[j]) {
-				binaryInsert(result, smallers[j]);
+				std::deque<int>::iterator bound = std::lower_bound(
+					result.begin(), result.end(), largers[j]);
+				binaryInsert(result, smallers[j], bound);
 				inserted[j] = true;
 			}
 		}
@@ -219,13 +227,16 @@ void PmergeMe::fordJohnsonSort(std::deque<int> &arr) {
 	size_t lastJacob = jacob.empty() ? 0 : jacob.back();
 	for (size_t i = smallers.size(); i > lastJacob; i--) {
 		if (i - 1 < smallers.size() && !inserted[i - 1]) {
-			binaryInsert(result, smallers[i - 1]);
-			inserted[i - 1] = true;
+			size_t idx = i - 1;
+			std::deque<int>::iterator bound = std::lower_bound(
+				result.begin(), result.end(), largers[idx]);
+			binaryInsert(result, smallers[idx], bound);
+			inserted[idx] = true;
 		}
 	}
 
 	if (hasStraggler)
-		binaryInsert(result, straggler);
+		binaryInsert(result, straggler, result.end());
 
 	arr = result;
 }
